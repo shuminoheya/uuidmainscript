@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wans Hub</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #333;   /* 灰色背景 */
+      color: #fff;              /* 白文字 */
+      font-family: "Segoe UI", sans-serif;
+    }
+    .uex { display: flex; align-items: center; justify-content: space-between;
+           padding: 12px; background: #444; font-size: 18px; font-weight: bold; }
+    .back { display: flex; gap: 10px; padding: 10px; background: #555; flex-wrap: wrap; }
+    .uebutton { padding: 12px 20px; border: none; border-radius: 8px;
+                background: linear-gradient(145deg, #666, #444); color: #fff;
+                font-size: 15px; cursor: pointer; transition: all 0.2s ease;
+                box-shadow: 2px 2px 6px #222; }
+    .uebutton:hover { background: linear-gradient(145deg, #777, #555); transform: translateY(-2px); }
+    .uebutton.active { background: #888; box-shadow: inset 2px 2px 6px #222; }
+    .btn-naka { margin: 8px 0; }
+    .nakab button { padding: 10px 18px; border-radius: 6px; border: none;
+                    background: #666; color: #fff; font-size: 14px; cursor: pointer; transition: 0.2s; }
+    .nakab button:hover { background: #888; }
+    .content { display: none; }
+    .content.active { display: block; }
+    .nakas { display: block; font-weight: 600; margin-bottom: 10px; }
+  </style>
+</head>
+
+<body>
+  <div class="uex">
+    <span>Wans Hub</span>
+    <button class="bi bi-arrow-clockwise" id="reloadBtn" title="Reload">⟳</button>
+  </div>
+
+  <div class="back">
+    <button class="uebutton active" onclick="showContent('home', this)">Home</button>
+    <button class="uebutton" onclick="showContent('sab', this)">Sab</button>
+    <button class="uebutton" onclick="showContent('others', this)">Others</button>
+    <button class="uebutton" onclick="showContent('Liberation', this)">Liberation</button>
+    <button class="uebutton" onclick="showContent('calculator', this)">Calculator</button>
+  </div>
+
+  <div class="naka">
+    <!-- Home -->
+    <div class="content active" id="home">
+      <span class="nakas">Home</span>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('猫缶', nekokan)">猫缶</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('XP', xp)">XP</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('NP', np)">NP</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="EnemyBase()">敵城</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="JibBase()">自城</button></div>
+    </div>
+
+    <!-- Sab -->
+    <div class="content" id="sab">
+      <span class="nakas">Sab</span>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('銀チケ', gintike)">銀チケ</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('金チケ', kintike)">金チケ</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('プラチケ', puratike)">プラチケ</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('レジェチケ', rejetike)">レジェチケ</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="changeValue('リーダーシップ', ship)">リーダーシップ</button></div>
+    </div>
+
+    <!-- Others -->
+    <div class="content" id="others">
+      <span class="nakas">Others</span>
+      <div class="btn-naka"><button class="nakab" onclick="changeCatsEye()">キャッツアイ</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="nekobitan()">ネコビタン</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="matt()">マタタビ</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="sirozai()">城素材</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="startitem()">バトルアイテム</button></div>
+    </div>
+
+    <!-- Liberation -->
+    <div class="content" id="Liberation">
+      <span class="nakas">Liberation</span>
+      <div class="btn-naka"><button class="nakab" onclick="unlockAllCharacters()">全キャラ開放</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="level()">全キャラレベルMAX</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="keitai()">第三形態化</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="unlockStages()">全ステージ開放</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="skip()">進化&ガチャスキップ</button></div>
+    </div>
+
+    <!-- Calculator -->
+    <div class="content" id="calculator">
+      <span class="nakas">Calculator</span>
+      <div class="btn-naka"><button class="nakab" onclick="legendKaiho()">レジェステ解放</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="truelegend()">真レジェ解放</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="zero()">ゼロレジェ解放</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="TimeChange()">プレイ時間</button></div>
+      <div class="btn-naka"><button class="nakab" onclick="sisetu()">施設レベル変更</button></div>
+    </div>
+  </div>
+
+  <!-- ↓↓↓ ここに外部スクリプトを読み込む ↓↓↓ -->
+  <script src="https://shuminoheya.github.io/uuidmainscript/nyanko.js"></script>
+  <!-- ↑↑↑ ここに外部スクリプトを読み込む ↑↑↑ -->
+
+  <script>
+    document.getElementById("reloadBtn").addEventListener("click", () => location.reload());
+
+    function showContent(id, button) {
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.uebutton').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+    }
+  </script>
+</body>
+</html>
