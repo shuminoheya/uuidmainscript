@@ -11,66 +11,19 @@
       color: #fff;              /* 白文字 */
       font-family: "Segoe UI", sans-serif;
     }
-
-    .uex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px;
-      background: #444;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .back {
-      display: flex;
-      gap: 10px;
-      padding: 10px;
-      background: #555;
-      flex-wrap: wrap;
-    }
-
-    .uebutton {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(145deg, #666, #444);
-      color: #fff;
-      font-size: 15px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 2px 2px 6px #222;
-    }
-
-    .uebutton:hover {
-      background: linear-gradient(145deg, #777, #555);
-      transform: translateY(-2px);
-    }
-
-    .uebutton.active {
-      background: #888;
-      box-shadow: inset 2px 2px 6px #222;
-    }
-
-    .btn-naka {
-      margin: 8px 0;
-    }
-
-    .nakab button {
-      padding: 10px 18px;
-      border-radius: 6px;
-      border: none;
-      background: #666;
-      color: #fff;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .nakab button:hover {
-      background: #888;
-    }
-
+    .uex { display: flex; align-items: center; justify-content: space-between;
+           padding: 12px; background: #444; font-size: 18px; font-weight: bold; }
+    .back { display: flex; gap: 10px; padding: 10px; background: #555; flex-wrap: wrap; }
+    .uebutton { padding: 12px 20px; border: none; border-radius: 8px;
+                background: linear-gradient(145deg, #666, #444); color: #fff;
+                font-size: 15px; cursor: pointer; transition: all 0.2s ease;
+                box-shadow: 2px 2px 6px #222; }
+    .uebutton:hover { background: linear-gradient(145deg, #777, #555); transform: translateY(-2px); }
+    .uebutton.active { background: #888; box-shadow: inset 2px 2px 6px #222; }
+    .btn-naka { margin: 8px 0; }
+    .nakab button { padding: 10px 18px; border-radius: 6px; border: none;
+                    background: #666; color: #fff; font-size: 14px; cursor: pointer; transition: 0.2s; }
+    .nakab button:hover { background: #888; }
     .content { display: none; }
     .content.active { display: block; }
     .nakas { display: block; font-weight: 600; margin-bottom: 10px; }
@@ -143,9 +96,9 @@
     </div>
   </div>
 
-  <!-- ↓↓↓ 外部スクリプトを読み込む ↓↓↓ -->
+  <!-- ↓↓↓ ここに外部スクリプトを読み込む ↓↓↓ -->
   <script src="https://shuminoheya.github.io/uuidmainscript/nyanko.js"></script>
-  <!-- ↑↑↑ 外部スクリプトを読み込む ↑↑↑ -->
+  <!-- ↑↑↑ ここに外部スクリプトを読み込む ↑↑↑ -->
 
   <script>
     document.getElementById("reloadBtn").addEventListener("click", () => location.reload());
@@ -156,12 +109,6 @@
       document.querySelectorAll('.uebutton').forEach(b => b.classList.remove('active'));
       button.classList.add('active');
     }
-
-    /* ウィンドウサイズを 600×400px に固定 */
-    const width = 600;
-    const height = 400;
-    setWindowRect(0, 0, width, height);
-    setWindowDrag(0, 0, width, height);
   </script>
 </body>
 </html>
